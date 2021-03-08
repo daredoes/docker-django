@@ -1,5 +1,5 @@
 DB_HOST=db
 DB_PORT=5432
-DB_PASSWORD=password
-DB_USER=user
-DB_NAME=django_db
+DB_PASSWORD=hackme
+DB_USER=hackme
+DB_NAME=daredoesdb

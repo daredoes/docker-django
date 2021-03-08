@@ -19,12 +19,9 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
 
-from myapp.views import ShowHelloWorld
-
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', ShowHelloWorld.as_view()),
     path(r'item/', include('myinventory.urls')),
 ]
 # urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

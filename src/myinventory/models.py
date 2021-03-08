@@ -1,5 +1,7 @@
 import uuid
 from django.db import models
+from collections import OrderedDict
+import json
 
 
 class ItemModel(models.Model):
@@ -15,9 +17,23 @@ class ItemModel(models.Model):
         return self.name
 
     def to_json(self):
+        ret_val = self.json_keys()
+        ret_val["id"] = str(self.id)
+        ret_val["name"] = self.name
+        ret_val["description"] = self.description
+        try:
+            ret_val["image"] = self.image.url
+        except ValueError:
+            pass  # There is no image
+
+        return json.loads(json.dumps(ret_val))
+
+    @staticmethod
+    def json_keys():
         return {
-            "id": self.id,
-            "name": self.name,
-            "description": self.description,
-            "image": self.image.url,
+            "id": "",
+            "name": "",
+            "description": "",
+            "image": "",
         }
+
